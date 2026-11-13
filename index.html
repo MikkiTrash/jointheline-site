@@ -1,0 +1,483 @@
+<title>Join the Line sajtförslag 5 film</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Layout: mjuk och varm mittenväg. Visitkortets färger (beige, loggans brunt och grönt), rundade kort med lätt lutning,
+     tejp och polaroider som ger handgjord västernkänsla utan tung kuliss. Loggan är Malins egen. Medvetet ett enda tema. */
+  :root {
+    --bg:      #f4ece3;   /* visitkortets beige */
+    --bg-2:    #eadfd1;   /* varm sand */
+    --card:    #fbf6ee;   /* ljust kort */
+    --ink:     #431a10;   /* loggans bruna */
+    --ink-2:   #6d5649;   /* mjukare brun för brödtext och stöd */
+    --green:   #3e7742;   /* loggans gröna */
+    --green-d: #2f5e34;
+    --sage:    #a9c3ab;   /* ljus salvia, tejp och detaljer */
+    --line:    #d9c9b8;
+    --display: "Alfa Slab One", "Rockwell", "Georgia", serif;
+    --body:    "Lora", "Georgia", serif;
+    --shadow:  5px 6px 0 rgba(67, 26, 16, .13);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body { background: var(--bg); color: var(--ink-2); font-family: var(--body); font-size: 1.1rem; line-height: 1.7; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: var(--green); }
+  :focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1040px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  section { padding-block: clamp(44px, 7vw, 88px); }
+  p { margin: 0 0 1rem; max-width: 60ch; }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; color: var(--ink); line-height: 1.12; margin: 0 0 .8rem; text-wrap: balance; }
+  h1 { font-size: clamp(2.2rem, 5.6vw, 3.7rem); }
+  h2 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); }
+  .center { text-align: center; }
+  .center p { margin-inline: auto; }
+  .hand { height: 14px; width: 120px; margin: 0 0 1.2rem; background: no-repeat center / contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14'><path d='M3 8 C 20 2, 34 12, 52 7 S 88 3, 117 8' fill='none' stroke='%233e7742' stroke-width='3.2' stroke-linecap='round'/></svg>"); }
+  .center .hand { margin-inline: auto; }
+
+  /* Meny */
+  header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(244, 236, 227, .96); border-bottom: 2px solid var(--line); }
+  header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 28px; padding-block: 8px; }
+  .brand img { height: 46px; width: auto; }
+  nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 24px; }
+  nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 1rem; padding: 6px 0; border-bottom: 3px solid transparent; }
+  nav a:not(.btn):hover, nav a[aria-current="true"] { border-bottom-color: var(--green); }
+  .btn { display: inline-block; font-family: var(--body); font-weight: 600; font-size: 1.02rem; line-height: 1.3; text-decoration: none; cursor: pointer; color: #fbf6ee; background: var(--green); border: 2px solid var(--ink); border-radius: 999px; padding: 11px 26px; box-shadow: 3px 4px 0 var(--ink); transition: transform .12s ease, box-shadow .12s ease; }
+  .btn:hover { transform: translate(1px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.ghost { background: var(--card); color: var(--ink); }
+  nav .btn { padding: 7px 20px; font-size: .98rem; }
+  nav .btn[aria-current="true"] { background: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px 18px; margin-top: 1.6rem; }
+
+  /* Hero */
+  .hero { padding-block: clamp(36px, 7vw, 84px) clamp(48px, 8vw, 96px); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 5vw, 64px); align-items: center; }
+  .lead { font-size: 1.25rem; line-height: 1.55; color: var(--ink-2); max-width: 34ch; }
+  .hero .badge { width: min(100%, 400px); justify-self: center; }
+
+
+  /* Hero-film */
+  .reel { position: relative; justify-self: center; width: min(100%, 300px); aspect-ratio: 9 / 16; background: var(--bg-2); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); transform: rotate(1.6deg); }
+  /* Gammal rostig spik istället för tejp (enkel ikon, sitter igenom kortet) */
+  .reel::before, .poster::before, .poster:nth-child(2)::before, .pol::before, .photo::before {
+    content: ""; position: absolute; top: -16px; left: 50%; width: 26px; height: 28px; margin-left: -13px; transform: none; border-radius: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 26'%3E%3Cellipse cx='14' cy='21.5' rx='8' ry='2.4' fill='%23431a10' opacity='.28'/%3E%3Crect x='10.6' y='8' width='2.8' height='12' fill='%235a3620'/%3E%3Crect x='10.6' y='8' width='1' height='12' fill='%238a5530'/%3E%3Cellipse cx='12' cy='20' rx='2.6' ry='1' fill='%232a170e'/%3E%3Cellipse cx='12' cy='6' rx='8.5' ry='2.2' fill='%238a5530' stroke='%233b2216' stroke-width='1.1'/%3E%3Cellipse cx='9.5' cy='5.3' rx='3.5' ry='.7' fill='%23b98558' opacity='.6'/%3E%3C/svg%3E") center / contain no-repeat; z-index: 3; pointer-events: none;
+  }
+  .reel video { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; display: block; }
+  .reelbtn { position: absolute; left: 12px; bottom: 12px; z-index: 2; font: inherit; font-size: .9rem; font-weight: 600; color: var(--ink); background: rgba(251, 246, 238, .92); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+  .reelbtn:hover { background: #fff; }
+
+  /* Första gången */
+  .first { padding-block: 0; }
+  .first .box { background: var(--green); color: #f6f1e7; border-radius: 26px; border: 2px solid var(--ink); box-shadow: var(--shadow); padding: 26px clamp(18px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 32px; }
+  .first p { margin: 0; max-width: none; font-size: 1.05rem; line-height: 1.5; display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+  .first img { width: 20px; margin-top: 3px; filter: brightness(0) invert(.95); }
+
+  /* Kurser */
+  .finder { margin: 2rem auto 0; max-width: 700px; background: var(--card); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); padding: 24px clamp(16px, 4vw, 32px) 26px; }
+  .finder h3 { font-size: 1.35rem; margin: 0 0 14px; }
+  .finder fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .finder legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .opt { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 2px solid var(--line); border-radius: 14px; cursor: pointer; font-size: 1.05rem; color: var(--ink); background: var(--bg); font-weight: 500; }
+  .opt:hover { border-color: var(--green); }
+  .opt input { width: 20px; height: 20px; accent-color: var(--green); flex: none; margin: 0; }
+  .opt:has(input:checked) { border-color: var(--green); background: #e6efe2; }
+  .answer { margin: 16px 0 0; min-height: 1.7em; color: var(--ink-2); }
+  .answer strong { font-family: var(--display); font-weight: 400; color: var(--green-d); }
+
+  .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 30px; margin-top: 2.8rem; align-items: stretch; }
+  .poster { position: relative; display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 34px 26px 26px; background: var(--card); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); transition: transform .18s ease; }
+  .poster:nth-child(1) { transform: rotate(-1.3deg); }
+  .poster:nth-child(2) { transform: rotate(.7deg) translateY(10px); }
+  .poster:nth-child(3) { transform: rotate(-.6deg); }
+  .poster:hover { transform: rotate(0) translateY(-3px); }
+  .poster.picked { box-shadow: 0 0 0 4px var(--green), var(--shadow); }
+  .lvl-row { display: flex; align-items: center; gap: 10px; color: var(--ink-2); font-size: .98rem; font-weight: 600; }
+  .cacti { display: inline-flex; gap: 4px; }
+  .cacti img { width: 17px; opacity: .22; }
+  .cacti img.on { opacity: 1; }
+  .poster h3 { font-size: 1.9rem; margin: 2px 0 0; }
+  .poster p { margin: 0; flex: 1; }
+  .when { margin: 6px 0 0; padding: 9px 14px; background: var(--bg); border-radius: 12px; font-size: .98rem; line-height: 1.4; color: var(--ink-2); }
+  .when b { color: var(--ink); }
+  .poster .btn { align-self: flex-start; margin-top: 10px; padding: 10px 24px; font-size: 1rem; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px 24px; margin: 3.2rem 0 0; }
+  .facts div { background: var(--bg-2); border-radius: 16px; padding: 14px 18px; }
+  .facts dt { font-size: .95rem; color: var(--ink-2); }
+  .facts dd { margin: 0; font-family: var(--display); font-size: 1.35rem; color: var(--ink); line-height: 1.25; }
+  .facts small { display: block; font-family: var(--body); font-size: .9rem; color: var(--ink-2); }
+
+  /* Event */
+  .band { background: var(--bg-2); border-radius: 40px; margin-inline: clamp(0px, 1.2vw, 14px); }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(26px, 6vw, 72px); align-items: center; }
+  .polaroids { position: relative; min-height: 340px; }
+  .pol { position: absolute; background: #fffaf2; padding: 10px 10px 36px; box-shadow: var(--shadow); width: 62%; }
+  .pol img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: sepia(.28) saturate(.75); }
+  .pol.a { left: 0; top: 0; transform: rotate(-4deg); }
+  .pol.b { right: 0; top: 70px; transform: rotate(3.5deg); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 1rem 0 0; }
+  .tags li { background: var(--card); border: 2px solid var(--ink); color: var(--ink); border-radius: 999px; padding: 2px 15px; font-size: .98rem; font-weight: 500; }
+  .steps { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 14px; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+  .steps li::before { content: counter(s); font-family: var(--display); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fbf6ee; border: 2px solid var(--ink); }
+  .steps b { display: block; color: var(--ink); font-weight: 600; line-height: 1.4; }
+  .steps span { font-size: 1rem; line-height: 1.5; display: block; }
+
+  /* Om mig */
+  .about { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: clamp(26px, 6vw, 72px); align-items: center; }
+  .photo { position: relative; background: #fffaf2; padding: 12px 12px 48px; box-shadow: var(--shadow); transform: rotate(1.6deg); max-width: 380px; width: 100%; }
+  .photo .ph { aspect-ratio: 4 / 5; background: var(--bg-2); overflow: hidden; }
+  .photo .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 34%; filter: sepia(.28) saturate(1.1); }
+  .welcome { font-family: var(--display); font-size: 1.35rem; line-height: 1.3; color: var(--green-d); margin-top: 1.4rem; }
+  .todo { font-style: italic; border-left: 4px solid var(--sage); padding-left: 14px; }
+
+  /* Instagram */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 12px; margin: 1.8rem 0; }
+  .grid a { display: block; aspect-ratio: 1; overflow: hidden; border: 2px solid var(--ink); border-radius: 16px; box-shadow: 3px 4px 0 rgba(67, 26, 16, .14); background: var(--card); }
+  .grid img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.28) saturate(.75); transition: transform .3s ease; }
+  .grid a:hover img { transform: scale(1.06); }
+
+  /* FAQ */
+  details { background: var(--card); border: 2px solid var(--line); border-radius: 16px; max-width: 740px; margin-bottom: 10px; }
+  details[open] { border-color: var(--ink); }
+  summary { cursor: pointer; list-style: none; padding: 15px 20px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-family: var(--display); color: var(--green); font-size: 1.4rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0; padding: 0 20px 16px; }
+  .note { font-size: .95rem; font-style: italic; margin-top: 1rem; }
+
+  /* Kontakt */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 72px); align-items: start; }
+  form { display: grid; gap: 16px; margin-top: 1.4rem; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  label { display: grid; gap: 6px; font-weight: 600; font-size: 1rem; color: var(--ink); }
+  input, select, textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 11px 14px; width: 100%; min-width: 0; }
+  input:hover, select:hover, textarea:hover { border-color: var(--green); }
+  textarea { min-height: 130px; resize: vertical; }
+  .status { margin: 0; min-height: 1.6em; color: var(--green-d); font-style: italic; }
+  .info { background: var(--card); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); padding: 26px; display: grid; gap: 16px; margin: 0; }
+  .info img { width: 150px; margin-bottom: 4px; }
+  .info dt { font-size: .95rem; color: var(--ink-2); }
+  .info dd { margin: 0; font-size: 1.15rem; color: var(--ink); font-weight: 500; }
+
+  footer { background: var(--ink); color: #eadfd2; padding-block: 36px; margin-top: clamp(32px, 6vw, 64px); }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
+  footer img { height: 54px; width: auto; }
+  footer p { margin: 0; max-width: none; }
+  footer .foot-info { line-height: 1.6; font-size: .95rem; }
+  footer .foot-info a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  footer .foot-right { display: flex; align-items: center; gap: 18px; }
+  footer .ig { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #eadfd2; color: #eadfd2; transition: background .2s, color .2s; }
+  footer .ig:hover, footer .ig:focus-visible { background: #eadfd2; color: var(--ink); }
+  footer .ig svg { width: 22px; height: 22px; }
+
+  @media (max-width: 800px) {
+    .hero .wrap, .split, .about, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+    .reel { width: 230px; justify-self: start; order: -1; transform: rotate(1deg); }
+    .poster:nth-child(n) { transform: none; }
+    .polaroids { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .pol { position: relative; width: auto; left: auto; right: auto; top: auto; }
+    .pol.b { top: 0; }
+    .photo { margin-inline: auto; }
+    .band { border-radius: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#hem" aria-label="Join the Line, till startsidan"><img src="img/logo-horizontal.png" width="900" height="392" alt="Join the Line, linedance"></a>
+    <nav aria-label="Huvudmeny">
+      <a href="#kurser">Kurser</a>
+      <a href="#event">Event</a>
+      <a href="#om-mig">Om mig</a>
+      <a href="#bilder">Bilder</a>
+      <a class="btn" href="#kontakt" data-sel="kurs">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hem">
+    <div class="wrap">
+      <div>
+        <h1>Linedance med countrykänsla</h1>
+        <div class="hand" aria-hidden="true"></div>
+        <p class="lead">Här möts countrymusik, dansglädje och gemenskap. Kom som du är, vi dansar tillsammans.</p>
+        <div class="actions">
+          <a class="btn" href="#kurser">Se kurserna</a>
+          <a class="btn ghost" href="#event">Boka ett event</a>
+        </div>
+      </div>
+      <div class="reel">
+        <video id="reel" src="media/hero-grupp.mp4" poster="media/hero-grupp-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Malin och deltagare dansar linedance i en lektion"></video>
+        <button class="reelbtn" id="reelbtn" type="button" aria-pressed="false">Pausa filmen</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="first">
+    <div class="wrap">
+      <div class="box">
+        <p><img src="img/cactus.png" width="300" height="391" alt=""><span>Du behöver varken kunna stegen eller ha dansat tidigare.</span></p>
+        <p><img src="img/cactus.png" width="300" height="391" alt=""><span>Vi börjar i lugn takt och lär oss nya steg tillsammans.</span></p>
+        <p><img src="img/cactus.png" width="300" height="391" alt=""><span>Dansglädje och gemenskap från första lektionen.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kurser">
+    <div class="wrap">
+      <div class="center">
+        <h2>Hitta din grupp</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Tre nivåer – från dina första steg till nya utmaningar. Snöra på bootsen och hitta din plats på dansgolvet!</p>
+      </div>
+
+      <div class="finder">
+        <h3>Vilken nivå passar mig?</h3>
+        <fieldset>
+          <legend>Hur van är du vid linedance?</legend>
+          <label class="opt"><input type="radio" name="niva" value="nashville"> Jag har aldrig dansat linedance</label>
+          <label class="opt"><input type="radio" name="niva" value="texas"> Jag kan några danser och vill lära mig fler</label>
+          <label class="opt"><input type="radio" name="niva" value="alabama"> Jag dansar gärna svårare koreografier</label>
+        </fieldset>
+        <p class="answer" id="answer" aria-live="polite">Välj det som stämmer bäst, så föreslår jag en grupp. Osäker? Hör av dig så hjälper jag dig välja.</p>
+      </div>
+
+      <div class="levels">
+        <article class="poster" id="nashville">
+          <div class="lvl-row"><span class="cacti" role="img" aria-label="Nivå 1 av 3"><img class="on" src="img/cactus.png" alt="" width="300" height="391"><img src="img/cactus.png" alt="" width="300" height="391"><img src="img/cactus.png" alt="" width="300" height="391"></span> Beginner</div>
+          <h3>Nashville</h3>
+          <p><b>Start your country story</b><br>Passet är för dig som precis kliver in genom saloondörren och som är helt ny i linedance, men även för dig som dansat tidigare och älskar flowet i grundstegen.</p>
+          <p class="when"><b>Dag och tid:</b> läggs in av Malin</p>
+          <a class="btn" href="#kontakt" data-sel="kurs-nashville">Anmäl intresse</a>
+        </article>
+        <article class="poster" id="texas">
+          <div class="lvl-row"><span class="cacti" role="img" aria-label="Nivå 2 av 3"><img class="on" src="img/cactus.png" alt="" width="300" height="391"><img class="on" src="img/cactus.png" alt="" width="300" height="391"><img src="img/cactus.png" alt="" width="300" height="391"></span> Intermediate</div>
+          <h3>Texas</h3>
+          <p><b>Bring it bigger</b><br>För dig som redan kan grunderna och vill ta steget vidare. Kombinationerna blir längre, övergångarna snabbare och uttrycket större.</p>
+          <p class="when"><b>Dag och tid:</b> läggs in av Malin</p>
+          <a class="btn" href="#kontakt" data-sel="kurs-texas">Anmäl intresse</a>
+        </article>
+        <article class="poster" id="alabama">
+          <div class="lvl-row"><span class="cacti" role="img" aria-label="Nivå 3 av 3"><img class="on" src="img/cactus.png" alt="" width="300" height="391"><img class="on" src="img/cactus.png" alt="" width="300" height="391"><img class="on" src="img/cactus.png" alt="" width="300" height="391"></span> Advanced</div>
+          <h3>Alabama</h3>
+          <p><b>Take it to the next level</b><br>Passet är för dig som redan är trygg i grunderna och vill utmana dig själv ännu mer och gå på stort.</p>
+          <p class="when"><b>Dag och tid:</b> läggs in av Malin</p>
+          <a class="btn" href="#kontakt" data-sel="kurs-alabama">Anmäl intresse</a>
+        </article>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Terminer</dt><dd>3 per år</dd></div>
+        <div><dt>Lektioner</dt><dd>10 per termin</dd></div>
+        <div><dt>Terminsavgift</dt><dd>1 295 kr<small>inklusive moms</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band" id="event">
+    <div class="wrap split">
+      <div>
+        <h2>Linedance för speciella tillfällen</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Planerar du en möhippa, en rolig kväll med vännerna eller en annorlunda aktivitet med kollegorna? Sadla upp för linedance! Jag erbjuder privata kurser och linedance för olika event, där countrymusiken och dansglädjen står i centrum.</p>
+        <p>Jag anpassar dansen efter gruppen och tillfället. Så snöra på bootsen, ta med ditt bästa humör och häng med – vi skapar härlig stämning och countrykänsla tillsammans!</p>
+        <ul class="tags" aria-label="Passar för"><li>Vänner</li><li>Möhippa</li><li>Kollegor</li><li>Privat lektion</li></ul>
+        <ol class="steps" aria-label="Så går en bokning till">
+          <li><div><b>Berätta vad ni vill göra</b><span>Vilket tillfälle det gäller och ungefär hur många ni är.</span></div></li>
+          <li><div><b>Vi hittar ett upplägg</b><span>Jag föreslår en dans som passar gruppen.</span></div></li>
+          <li><div><b>Kom och dansa</b><span>Ingen behöver kunna stegen i förväg.</span></div></li>
+        </ol>
+        <div class="actions"><a class="btn" href="#kontakt" data-sel="event">Fråga om ett event</a></div>
+      </div>
+      <div class="polaroids" aria-hidden="true">
+        <div class="pol a"><img src="img/crop-cowboy.jpg" alt="" loading="lazy"></div>
+        <div class="pol b"><img src="img/crop-saloon.jpg" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="om-mig">
+    <div class="wrap about">
+      <div class="photo">
+        <div class="ph"><img src="img/malin2.jpg" width="1000" height="1328" alt="Malin ler och håller i sin cowboyhatt, omgiven av två dansare i rutiga skjortor" loading="lazy"></div>
+      </div>
+      <div>
+        <h2>Min resa med linedance</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Strax innan pandemin fick jag upp ögonen för linedance och började själv gå på kurs. När covid kom och kurserna ställdes in hade jag svårt att släppa dansen. Jag fortsatte därför på egen hand och tillsammans med vänner.</p>
+        <p>Med tiden växte önskan att dela dansglädjen med fler och ge andra chansen att upptäcka allt det fantastiska som linedance har att erbjuda.</p>
+        <p>För mig är linedance så mycket mer än danssteg och musik. Det handlar om glädje, gemenskap, härliga skratt och vänskapsband som växer fram längs vägen. Det är en plats där vi kan släppa vardagen för en stund, utvecklas tillsammans och framför allt ha roligt.</p>
+        <p>Nu vill jag dela den känslan med dig och välkomna fler in i linedancens härliga värld.</p>
+        <p class="welcome">Varmt välkommen att dansa med mig!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="bilder" style="padding-top:0">
+    <div class="wrap">
+      <div class="center">
+        <h2>Följ oss på Instagram</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Bilder från lektionerna och andra country news!</p>
+      </div>
+      <div class="grid" aria-label="Instagram-flödet visas här">
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-boots.jpg" alt="Cowboyboots och ett rep vid en trästolpe." loading="lazy"></a>
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-hat.jpg" alt="Cowboyhatt och rep hängande på en stolpe." loading="lazy"></a>
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-portrait.jpg" alt="Kvinna med cowboyhatt som tittar mot kameran." loading="lazy"></a>
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-mesa.jpg" alt="Röda bergsformationer i solnedgången." loading="lazy"></a>
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-saloon.jpg" alt="Saloonen längs gatan." loading="lazy"></a>
+        <a href="#bilder" aria-label="Bild"><img src="img/crop-cowboy.jpg" alt="Leende cowboy som lutar sig tillbaka." loading="lazy"></a>
+      </div>
+      <div class="center actions" style="justify-content:center"><a class="btn ghost" href="https://www.instagram.com/_join_the_line_/" target="_blank" rel="noopener">@_join_the_line_</a></div>
+    </div>
+  </section>
+
+  <section id="fragor" style="padding-top:0">
+    <div class="wrap">
+      <h2>Vanliga frågor</h2>
+      <div class="hand" aria-hidden="true"></div>
+      <details>
+        <summary>Måste jag kunna dansa sedan tidigare?</summary>
+        <p>Nej. Du behöver varken kunna stegen eller ha dansat tidigare. I Nashville börjar vi med grunderna i lugn takt.</p>
+      </details>
+      <details>
+        <summary>Vilken grupp ska jag välja?</summary>
+        <p>Är du ny, välj Nashville. Kan du några danser, välj Texas. Vill du ha mer utmaning, välj Alabama. Är du osäker kan du skriva till mig så hjälper jag dig.</p>
+      </details>
+      <details>
+        <summary>Hur anmäler jag mig?</summary>
+        <p>Skicka en intresseanmälan med formuläret längre ner, så hör jag av mig och berättar mer om kursen.</p>
+      </details>
+      <details>
+        <summary>Kan jag boka ett event eller en privat lektion?</summary>
+        <p>Ja. Berätta vilket tillfälle det gäller och hur många ni är, så hittar vi ett upplägg som passar.</p>
+      </details>
+      <details>
+        <summary>Övriga frågor</summary>
+        <p>Undrar du över något annat? Skriv till mig via formuläret nedan eller på <a href="mailto:info@jointheline.se">info@jointheline.se</a>, så svarar jag så snart jag kan.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="band" id="kontakt">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>På med bootsen så kör vi!</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Nyfiken på linedance eller sugen på att boka en egen dansupplevelse? Hör gärna av dig, så hittar vi ett upplägg som passar dig och ditt sällskap.</p>
+        <form id="kontaktform" novalidate>
+          <div class="row">
+            <label for="namn">Namn <input id="namn" name="namn" type="text" autocomplete="name" required></label>
+            <label for="epost">E-post <input id="epost" name="epost" type="email" autocomplete="email" required></label>
+          </div>
+          <label for="galler">Det gäller
+            <select id="galler" name="galler">
+              <option value="kurs">En kurs, jag är osäker på nivå</option>
+              <option value="kurs-nashville">Nashville Beginner</option>
+              <option value="kurs-texas">Texas Intermediate</option>
+              <option value="kurs-alabama">Alabama Advanced</option>
+              <option value="privat">Privat lektion</option>
+              <option value="event">Event eller möhippa</option>
+              <option value="annat">Något annat</option>
+            </select>
+          </label>
+          <label for="meddelande">Meddelande <textarea id="meddelande" name="meddelande" required></textarea></label>
+          <div><button class="btn" type="submit">Skicka</button></div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <dl class="info">
+        <img src="img/logo-badge.png" width="900" height="719" alt="">
+        <div><dt>Adress</dt><dd>Cementvägen 4<br>311 32 Falkenberg</dd></div>
+        <div><dt>E-post</dt><dd><a href="mailto:info@jointheline.se">info@jointheline.se</a></dd></div>
+        <div><dt>Instagram</dt><dd>@_join_the_line_</dd></div>
+        <div><dt>Webb</dt><dd>jointheline.se</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#hem" aria-label="Till toppen"><img src="img/logo-horizontal-light.png" width="900" height="392" alt="Join the Line, linedance"></a>
+    <div class="foot-right">
+      <p>Know it's time, join the line</p>
+      <a class="ig" href="https://www.instagram.com/_join_the_line_/" target="_blank" rel="noopener" aria-label="Join the Line på Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("kontaktform");
+  const status = document.getElementById("status");
+  const select = document.getElementById("galler");
+
+  // Mockup: formuläret skickar inget. Den riktiga sajten kopplar det till Wix.
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.namn.value.trim() || !form.epost.value.trim() || !form.meddelande.value.trim()) {
+      status.textContent = "Fyll i namn, e-post och ett meddelande.";
+      return;
+    }
+    status.textContent = "Det här är en mockup, så meddelandet har inte skickats.";
+  });
+
+  document.querySelectorAll("[data-sel]").forEach((a) => {
+    a.addEventListener("click", () => { select.value = a.dataset.sel; });
+  });
+
+  // Nivåhjälp
+  const text = {
+    nashville: ["Nashville Beginner", "Du börjar med grunderna i lugn takt.", "kurs-nashville", "#nashville"],
+    texas: ["Texas Intermediate", "Du får nya koreografier och fler låtar att dansa till.", "kurs-texas", "#texas"],
+    alabama: ["Alabama Advanced", "Du får mer utmaning, nya stegkombinationer och svårare koreografier.", "kurs-alabama", "#alabama"],
+  };
+  const answer = document.getElementById("answer");
+  document.querySelectorAll('input[name="niva"]').forEach((r) => {
+    r.addEventListener("change", () => {
+      const t = text[r.value];
+      answer.innerHTML = 'Vi föreslår <strong></strong>. ' + t[1] + ' <a href="#kontakt">Anmäl intresse</a>';
+      answer.querySelector("strong").textContent = t[0];
+      answer.querySelector("a").addEventListener("click", () => { select.value = t[2]; });
+      document.querySelectorAll(".poster").forEach((p) => p.classList.remove("picked"));
+      document.querySelector(t[3]).classList.add("picked");
+    });
+  });
+
+
+  // Hero-filmen: pausa-knapp, och ingen automatisk uppspelning om besökaren har minskad rörelse
+  const reel = document.getElementById("reel");
+  const reelbtn = document.getElementById("reelbtn");
+  function setBtn() { const paused = reel.paused; reelbtn.textContent = paused ? "Spela filmen" : "Pausa filmen"; reelbtn.setAttribute("aria-pressed", String(paused)); }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { reel.removeAttribute("autoplay"); reel.pause(); }
+  reelbtn.addEventListener("click", () => { if (reel.paused) { reel.play().catch(() => {}); } else { reel.pause(); } });
+  reel.addEventListener("play", setBtn); reel.addEventListener("pause", setBtn);
+  setBtn();
+
+  // Markera aktuell sektion i menyn
+  const links = [...document.querySelectorAll("nav a[href^='#']")];
+  const targets = links.map((a) => document.querySelector(a.getAttribute("href")));
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          const i = targets.indexOf(en.target);
+          links.forEach((a, k) => k === i ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"));
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    targets.forEach((t) => t && io.observe(t));
+  }
+</script>
