@@ -1,5 +1,17 @@
-<title>Join the Line sajtförslag 5 film</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join the Line – linedance i Falkenberg</title>
+<meta name="description" content="Linedance med countrykänsla i Falkenberg. Kurser för nybörjare och vana dansare, samt linedance för möhippor, vänner och kollegor.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Join the Line – linedance med countrykänsla">
+<meta property="og:description" content="Kurser i linedance för alla nivåer och linedance för event i Falkenberg.">
+<meta property="og:image" content="https://jointheline.se/img/delning.jpg">
+<meta property="og:locale" content="sv_SE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/cactus.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -64,7 +76,7 @@
   /* Hero-film */
   .reel { position: relative; justify-self: center; width: min(100%, 300px); aspect-ratio: 9 / 16; background: var(--bg-2); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); transform: rotate(1.6deg); }
   /* Gammal rostig spik istället för tejp (enkel ikon, sitter igenom kortet) */
-  .reel::before, .poster::before, .poster:nth-child(2)::before, .pol::before, .photo::before {
+  .reel::before, .poster::before, .poster:nth-child(2)::before, .pol::before, .photo::before, .group .frame::before {
     content: ""; position: absolute; top: -16px; left: 50%; width: 26px; height: 28px; margin-left: -13px; transform: none; border-radius: 0;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 26'%3E%3Cellipse cx='14' cy='21.5' rx='8' ry='2.4' fill='%23431a10' opacity='.28'/%3E%3Crect x='10.6' y='8' width='2.8' height='12' fill='%235a3620'/%3E%3Crect x='10.6' y='8' width='1' height='12' fill='%238a5530'/%3E%3Cellipse cx='12' cy='20' rx='2.6' ry='1' fill='%232a170e'/%3E%3Cellipse cx='12' cy='6' rx='8.5' ry='2.2' fill='%238a5530' stroke='%233b2216' stroke-width='1.1'/%3E%3Cellipse cx='9.5' cy='5.3' rx='3.5' ry='.7' fill='%23b98558' opacity='.6'/%3E%3C/svg%3E") center / contain no-repeat; z-index: 3; pointer-events: none;
   }
@@ -129,6 +141,13 @@
   .steps b { display: block; color: var(--ink); font-weight: 600; line-height: 1.4; }
   .steps span { font-size: 1rem; line-height: 1.5; display: block; }
 
+
+  /* Gruppbild */
+  .group { margin: 0 auto; max-width: 900px; }
+  .group .frame { position: relative; background: #fffaf2; padding: 12px 12px 18px; box-shadow: var(--shadow); transform: rotate(-.8deg); }
+  .group .frame img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; filter: sepia(.12) saturate(1.05); }
+  .group figcaption { text-align: center; font-family: var(--display); color: var(--green-d); font-size: 1.2rem; margin-top: 14px; }
+
   /* Om mig */
   .about { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: clamp(26px, 6vw, 72px); align-items: center; }
   .photo { position: relative; background: #fffaf2; padding: 12px 12px 48px; box-shadow: var(--shadow); transform: rotate(1.6deg); max-width: 380px; width: 100%; }
@@ -190,6 +209,8 @@
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
+</head>
+<body>
 
 <header>
   <div class="wrap">
@@ -281,6 +302,22 @@
         <div><dt>Lektioner</dt><dd>10 per termin</dd></div>
         <div><dt>Terminsavgift</dt><dd>1 295 kr<small>inklusive moms</small></dd></div>
       </dl>
+    </div>
+  </section>
+
+  <section id="ganget">
+    <div class="wrap">
+      <div class="center">
+        <h2>Häng med gänget</h2>
+        <div class="hand" aria-hidden="true"></div>
+        <p>Nybörjare och rutinerade, alla dansar tillsammans. Hos oss är det alltid plats för en till på raden.</p>
+      </div>
+      <figure class="group" style="margin-top: 2.4rem;">
+        <div class="frame">
+          <img src="img/gruppbild.jpg" width="1400" height="1050" loading="lazy" alt="Malin och ett tiotal dansare i cowboyhattar och rutiga skjortor står i en danssal och håller upp en träskylt med texten Join the Line">
+        </div>
+        <figcaption>Join the line!</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -481,3 +518,5 @@
     targets.forEach((t) => t && io.observe(t));
   }
 </script>
+</body>
+</html>
