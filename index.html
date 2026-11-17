@@ -128,11 +128,12 @@
   /* Event */
   .band { background: var(--bg-2); border-radius: 40px; margin-inline: clamp(0px, 1.2vw, 14px); }
   .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(26px, 6vw, 72px); align-items: center; }
-  .polaroids { position: relative; min-height: 340px; }
-  .pol { position: absolute; background: #fffaf2; padding: 10px 10px 36px; box-shadow: var(--shadow); width: 62%; }
-  .pol img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: sepia(.28) saturate(.75); }
+  .polaroids { position: relative; min-height: 520px; }
+  .pol { position: absolute; background: #fffaf2; padding: 10px 10px 36px; box-shadow: var(--shadow); width: 56%; }
+  .pol img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 80%; filter: sepia(.28) saturate(.75); }
   .pol.a { left: 0; top: 0; transform: rotate(-4deg); }
-  .pol.b { right: 0; top: 70px; transform: rotate(3.5deg); }
+  .pol.b img { object-position: 50% 70%; }
+  .pol.b { right: 0; top: 120px; transform: rotate(3.5deg); }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 1rem 0 0; }
   .tags li { background: var(--card); border: 2px solid var(--ink); color: var(--ink); border-radius: 999px; padding: 2px 15px; font-size: .98rem; font-weight: 500; }
   .steps { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 14px; counter-reset: s; }
@@ -332,9 +333,9 @@
         </ol>
         <div class="actions"><a class="btn" href="#kontakt" data-sel="event">Fråga om ett event</a></div>
       </div>
-      <div class="polaroids" aria-hidden="true">
-        <div class="pol a"><img src="img/crop-cowboy.jpg" alt="" loading="lazy"></div>
-        <div class="pol b"><img src="img/crop-saloon.jpg" alt="" loading="lazy"></div>
+      <div class="polaroids">
+        <div class="pol a"><img src="img/dance2.jpg" width="900" height="1349" alt="Deltagare dansar linedance i en lektion" loading="lazy"></div>
+        <div class="pol b"><img src="img/dance-scen.jpg" width="900" height="1190" alt="Linedance utomhus framför en scen en solig dag" loading="lazy"></div>
       </div>
     </div>
   </section>
