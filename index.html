@@ -182,6 +182,7 @@
   input, select, textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 11px 14px; width: 100%; min-width: 0; }
   input:hover, select:hover, textarea:hover { border-color: var(--green); }
   textarea { min-height: 130px; resize: vertical; }
+  .small-print { margin: 0; font-size: .9rem; line-height: 1.5; color: var(--ink-2); }
   .status { margin: 0; min-height: 1.6em; color: var(--green-d); font-style: italic; }
   .info { background: var(--card); border: 2px solid var(--ink); border-radius: 22px; box-shadow: var(--shadow); padding: 26px; display: grid; gap: 16px; margin: 0; }
   .info img { width: 150px; margin-bottom: 4px; }
@@ -426,7 +427,9 @@
             </select>
           </label>
           <label for="meddelande">Meddelande <textarea id="meddelande" name="meddelande" required></textarea></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
           <div><button class="btn" type="submit">Skicka</button></div>
+          <p class="small-print">Dina uppgifter används bara för att svara på din förfrågan och sparas inte längre än så.</p>
           <p class="status" id="status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -458,16 +461,41 @@
   const status = document.getElementById("status");
   const select = document.getElementById("galler");
 
-  // Mockup: formuläret skickar inget. Den riktiga sajten kopplar det till Wix.
-  form.addEventListener("submit", (e) => {
+  // Skickar formuläret till Formspree, som mejlar förfrågan vidare till Malin.
+  const ENDPOINT = "https://formspree.io/f/xnpddorw";
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.namn.value.trim() || !form.epost.value.trim() || !form.meddelande.value.trim()) {
       status.textContent = "Fyll i namn, e-post och ett meddelande.";
       return;
     }
-    status.textContent = "Det här är en mockup, så meddelandet har inte skickats.";
+    if (form._gotcha && form._gotcha.value) return; // skräppost-fälla
+    const btn = form.querySelector("button[type=submit]");
+    const label = select.options[select.selectedIndex].text;
+    btn.disabled = true;
+    status.textContent = "Skickar …";
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          namn: form.namn.value.trim(),
+          epost: form.epost.value.trim(),
+          galler: label,
+          meddelande: form.meddelande.value.trim(),
+          _replyto: form.epost.value.trim(),
+          _subject: "Förfrågan från jointheline.se: " + label
+        })
+      });
+      if (!res.ok) throw new Error("status " + res.status);
+      form.reset();
+      status.textContent = "Tack! Ditt meddelande är skickat. Jag hör av mig så snart jag kan.";
+    } catch (err) {
+      status.textContent = "Något gick fel. Försök igen, eller mejla oss på info@jointheline.se.";
+    } finally {
+      btn.disabled = false;
+    }
   });
-
   document.querySelectorAll("[data-sel]").forEach((a) => {
     a.addEventListener("click", () => { select.value = a.dataset.sel; });
   });
