@@ -159,6 +159,7 @@
   .todo { font-style: italic; border-left: 4px solid var(--sage); padding-left: 14px; }
 
   /* Instagram */
+  .grid[hidden] { display: none; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 12px; margin: 1.8rem 0; }
   .grid a { display: block; aspect-ratio: 1; overflow: hidden; border: 2px solid var(--ink); border-radius: 16px; box-shadow: 3px 4px 0 rgba(67, 26, 16, .14); background: var(--card); }
   .grid img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.28) saturate(.75); transition: transform .3s ease; }
@@ -365,14 +366,7 @@
         <div class="hand" aria-hidden="true"></div>
         <p>Bilder från lektionerna och andra country news!</p>
       </div>
-      <div class="grid" aria-label="Instagram-flödet visas här">
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-boots.jpg" alt="Cowboyboots och ett rep vid en trästolpe." loading="lazy"></a>
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-hat.jpg" alt="Cowboyhatt och rep hängande på en stolpe." loading="lazy"></a>
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-portrait.jpg" alt="Kvinna med cowboyhatt som tittar mot kameran." loading="lazy"></a>
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-mesa.jpg" alt="Röda bergsformationer i solnedgången." loading="lazy"></a>
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-saloon.jpg" alt="Saloonen längs gatan." loading="lazy"></a>
-        <a href="#bilder" aria-label="Bild"><img src="img/crop-cowboy.jpg" alt="Leende cowboy som lutar sig tillbaka." loading="lazy"></a>
-      </div>
+      <div class="grid" id="ig-grid" aria-label="Senaste bilderna från Instagram" hidden></div>
       <div class="center actions" style="justify-content:center"><a class="btn ghost" href="https://www.instagram.com/_join_the_line_/" target="_blank" rel="noopener">@_join_the_line_</a></div>
     </div>
   </section>
@@ -542,6 +536,38 @@
     }, { rootMargin: "-40% 0px -55% 0px" });
     targets.forEach((t) => t && io.observe(t));
   }
+
+  // Instagram-flödet hämtas från Behold (en JSON-adress till @_join_the_line_). Misslyckas det visas bara knappen.
+  (function () {
+    const FEED = "https://feeds.behold.so/N8Jumc4WGeQy2ddC6twz";
+    const grid = document.getElementById("ig-grid");
+    if (!grid) return;
+    const pick = (post) => {
+      const sz = post.sizes && (post.sizes.medium || post.sizes.large || post.sizes.small);
+      return (sz && sz.mediaUrl) || post.thumbnailUrl || post.mediaUrl || "";
+    };
+    fetch(FEED, { headers: { "Accept": "application/json" } })
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((data) => {
+        const posts = (data && data.posts || []).slice(0, 6);
+        const items = posts.map((post) => {
+          const src = pick(post);
+          if (!src || !post.permalink) return null;
+          const a = document.createElement("a");
+          a.href = post.permalink; a.target = "_blank"; a.rel = "noopener";
+          a.setAttribute("aria-label", "Öppna inlägget på Instagram");
+          const img = document.createElement("img");
+          img.src = src; img.loading = "lazy"; img.decoding = "async";
+          img.alt = ((post.caption || "").replace(/\s+/g, " ").trim().slice(0, 110)) || "Bild från Join the Line på Instagram";
+          a.appendChild(img);
+          return a;
+        }).filter(Boolean);
+        if (!items.length) return;
+        items.forEach((el) => grid.appendChild(el));
+        grid.hidden = false;
+      })
+      .catch(() => { /* ingen bildrad, bara Instagram-knappen */ });
+  })();
 </script>
 </body>
 </html>
